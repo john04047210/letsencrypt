@@ -1,0 +1,11 @@
+docker-compose up -d
+mkdir -p /data/cert/letsencrypt/etc
+mkdir -p /data/cert/letsencrypt/var/lib
+mkdir -p /data/cert/letsencrypt/var/log
+docker run -it --rm -v /data/cert/letsencrypt/etc:/etc/letsencrypt -v /data/cert/letsencrypt/var/lib:/var/lib/letsencrypt -v /data/cert/letsencrypt/var/log:/var/log/letsencrypt -v /data/compose/letsencrypt/letsencrypt-site:/data/letsencrypt certbot/certbot certonly --webroot --register-unsafely-without-email --agree-tos --webroot-path=/data/letsencrypt --staging -d www.shilikaif.com -d wepy.shilikaif.com
+docker run --rm -it --name certbot -v /data/cert/letsencrypt/etc:/etc/letsencrypt -v /data/cert/letsencrypt/var/lib:/var/lib/letsencrypt -v /data/compose/letsencrypt/letsencrypt-site:/data/letsencrypt certbot/certbot --staging certificates
+
+rm -rf /data/cert/letsencrypt
+
+docker run -it --rm -v /data/cert/letsencrypt/etc:/etc/letsencrypt -v /data/cert/letsencrypt/var/lib:/var/lib/letsencrypt -v /data/cert/letsencrypt/var/log:/var/log/letsencrypt -v /data/compose/letsencrypt/letsencrypt-site:/data/letsencrypt certbot/certbot certonly --webroot --email john_04047210@163.com --agree-tos --no-eff-email --webroot-path=/data/letsencrypt --staging -d www.shilikaif.com -d wepy.shilikaif.com
+docker-compose down
