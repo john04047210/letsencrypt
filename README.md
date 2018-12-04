@@ -9,3 +9,4 @@ rm -rf /data/cert/letsencrypt
 
 docker run -it --rm -v /data/cert/letsencrypt/etc:/etc/letsencrypt -v /data/cert/letsencrypt/var/lib:/var/lib/letsencrypt -v /data/cert/letsencrypt/var/log:/var/log/letsencrypt -v /data/compose/letsencrypt/letsencrypt-site:/data/letsencrypt certbot/certbot certonly --webroot --email john_04047210@163.com --agree-tos --no-eff-email --webroot-path=/data/letsencrypt --staging -d www.shilikaif.com -d wepy.shilikaif.com
 docker-compose down
+openssl dhparam -out /data/cert/dh-param/dhparam-2048.pem 2048

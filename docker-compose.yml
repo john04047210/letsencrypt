@@ -1,10 +1,9 @@
-version: '3.1'
+version: '3.2'
 
 services:
-
-  letsencrypt-nginx-container:
-    container_name: 'letsencrypt-nginx-container'
-    image: nginx:1.14.0
+  letsencrypt-nginx:
+    container_name: 'letsencrypt-nginx'
+    image: nginx:1.14.1-alpine
     ports:
       - "80:80"
     volumes:
