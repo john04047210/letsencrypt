@@ -17,7 +17,7 @@
     0 0,12 * * * python -c 'import random; import time; time.sleep(random.random() * 3600)' && docker run --rm -it --name certbot -v "/data/cert/letsencrypt/etc:/etc/letsencrypt" -v "/data/cert/letsencrypt/var/lib:/var/lib/letsencrypt" -v "/data/cert/letsencrypt/data:/data/letsencrypt" -v "/data/cert/letsencrypt/var/log:/var/log/letsencrypt" certbot/certbot renew --webroot -w /data/letsencrypt --quiet && docker kill --signal=HUP nginx-proxy
 
 
-###dns-google
-    docker run -it --rm -v /data/cert/letsencrypt/etc:/etc/letsencrypt -v /data/cert/letsencrypt/var/lib:/var/lib/letsencrypt -v /data/cert/letsencrypt/var/log:/var/log/letsencrypt -v /data/compose/letsencrypt/letsencrypt-site:/data/letsencrypt certbot/dns-google certonly --webroot --email john_04047210@163.com --agree-tos --no-eff-email --webroot-path=/data/letsencrypt --staging -d *.shilikaif.com --server https://acme-v02.api.letsencrypt.org/directory
+###dns-google[error]
+    docker run -it --rm -v /data/cert/letsencrypt/etc:/etc/letsencrypt -v /data/cert/letsencrypt/var/lib:/var/lib/letsencrypt -v /data/cert/letsencrypt/var/log:/var/log/letsencrypt -v /data/compose/letsencrypt/letsencrypt-site:/data/letsencrypt certbot/dns-google certonly --webroot --email john_04047210@163.com --agree-tos --no-eff-email --webroot-path=/data/letsencrypt --staging -d *.shilikaif.com -d shilikaif.com --server https://acme-v02.api.letsencrypt.org/directory
 
     docker run -it --rm -v /data/cert/letsencrypt/etc:/etc/letsencrypt -v /data/cert/letsencrypt/var/lib:/var/lib/letsencrypt -v /data/cert/letsencrypt/var/log:/var/log/letsencrypt -v /data/compose/letsencrypt/letsencrypt-site:/data/letsencrypt certbot/dns-google certonly --webroot --register-unsafely-without-email --agree-tos --webroot-path=/data/letsencrypt --staging -d www.shilikaif.com
